@@ -1,2 +1,2 @@
 # Chantang
-jpa project
+jpa React.js project 
