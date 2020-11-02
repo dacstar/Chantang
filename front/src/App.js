@@ -1,14 +1,13 @@
 import React from 'react';
-import Header from'./layout/Header';
-import SearchBar from './layout/SearchBar';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './routes/Home';
+import Admin from './routes/Admin';
 
-function App() {
-  return (
-    <>
-      <Header/>
-      <SearchBar/>
-    </>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Route path="/" exact component={Home} />
+    <Route path="/admin" component={Admin} />
+  </BrowserRouter>
+);
 
 export default App;
