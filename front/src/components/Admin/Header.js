@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   adminButton: {
     marginRight: theme.spacing(2),
+    color: 'white',
   },
   title: {
     flexGrow: 1,

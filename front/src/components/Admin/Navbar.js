@@ -27,8 +27,22 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({ setNavbarController }) => {
   const classes = useStyles();
+
+  const handleClick = (e) => {
+    const componentName = e.currentTarget.value;
+
+    if (componentName === 'board') {
+      setNavbarController({ board: true, user: false, graph: false });
+    } else if (componentName === 'user') {
+      setNavbarController({ board: false, user: true, graph: false });
+    } else if (componentName === 'graph') {
+      setNavbarController({ board: false, user: false, graph: true });
+    } else {
+      console.warn('Wrong Button Value.');
+    }
+  };
 
   return (
     <Drawer
@@ -41,7 +55,7 @@ const Navbar = () => {
       <Toolbar />
       <List>
         <ListItem className={classes.item}>
-          <Button size="small">
+          <Button size="small" value="board" onClick={handleClick}>
             <ListItemIcon className={classes.iconBtn}>
               <PanoramaIcon />
             </ListItemIcon>
@@ -49,7 +63,7 @@ const Navbar = () => {
           </Button>
         </ListItem>
         <ListItem className={classes.item}>
-          <Button size="small">
+          <Button size="small" value="user" onClick={handleClick}>
             <ListItemIcon className={classes.iconBtn}>
               <PeopleIcon />
             </ListItemIcon>
@@ -57,7 +71,7 @@ const Navbar = () => {
           </Button>
         </ListItem>
         <ListItem className={classes.item}>
-          <Button size="small">
+          <Button size="small" value="graph" onClick={handleClick}>
             <ListItemIcon className={classes.iconBtn}>
               <EqualizerIcon />
             </ListItemIcon>

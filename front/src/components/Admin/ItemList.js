@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import AddIcon from '@material-ui/icons/Add';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
+import ItemCardComponent from './ItemCardComponent';
+import UserCardComponent from './UserCardComponent';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -28,60 +23,46 @@ const useStyles = makeStyles((theme) => ({
     left: 'auto',
     position: 'fixed',
   },
+  cardContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  cardButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  themeType: {
+    fontSize: 12,
+  },
 }));
 
-const ItemList = () => {
+const ItemList = ({
+  board, users, graph, navbarController,
+}) => {
   const classes = useStyles();
+  const { board: isBoard, user: isUser, graph: isGraph } = navbarController;
 
-  const [board, setBoard] = useState(null);
+  const currentCardComponent = () => {
+    if (isBoard && board) {
+      return board.map((item) => <ItemCardComponent key={item.id} item={item} />);
+    }
 
-  const getData = () => axios.get('/boards');
+    if (isUser && users) {
+      return users.map((item) => <UserCardComponent key={item.id} item={item} />);
+    }
 
-  useEffect(() => {
-    const fetchBoardData = async () => {
-      const boardData = await getData();
-      setBoard(boardData);
-    };
+    if (isGraph && graph) {
+      return (<div>준비중..</div>);
+    }
 
-    fetchBoardData();
-  }, []);
-
-  const itemCardComponent = ({
-    id, title, views, content, themeType,
-  }) => (
-    <Grid key={id} item xs={4}>
-      <Card variant="outlined">
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            {title}
-          </Typography>
-          <Typography>
-            {views}
-          </Typography>
-          <Typography>
-            {content}
-          </Typography>
-          <Typography>
-            {themeType}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <IconButton>
-            <CreateIcon />
-          </IconButton>
-          <IconButton>
-            <DeleteForeverIcon />
-          </IconButton>
-        </CardActions>
-      </Card>
-    </Grid>
-  );
+    return (<div>There is no information.</div>);
+  };
 
   return (
     <div className={classes.content}>
       <Toolbar />
       <Grid container spacing={2}>
-        {board ? board.data.items.map((item) => itemCardComponent(item)) : <div>로딩중...</div>}
+        {currentCardComponent()}
       </Grid>
       <Fab color="primary" aria-label="add" className={classes.fab}>
         <AddIcon />
