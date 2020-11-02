@@ -27,12 +27,13 @@ const Header = () => {
   return (
     <AppBar className={classes.root} position="fixed" color="secondary">
       <Toolbar>
-        <Link href="/">
+        <Link href="/admin">
           <HttpsIcon color="inherit" className={classes.adminButton} />
         </Link>
         <Typography variant="h6" className={classes.title}>
           관리자 페이지
         </Typography>
+        <Button href="/" color="inherit">홈으로</Button>
         <Button color="inherit">로그아웃</Button>
       </Toolbar>
     </AppBar>
