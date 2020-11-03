@@ -3,11 +3,11 @@ import Header from '../components/Main/Header';
 import SearchBar from '../components/Main/SearchBar';
 import BoardList from '../components/Main/BoardList';
 
-const Home = () => (
+const Home = ({ board }) => (
   <section>
     <Header />
     <SearchBar />
-    <BoardList />
+    <BoardList board={board} />
   </section>
 );
 
