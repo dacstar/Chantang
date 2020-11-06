@@ -37,21 +37,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ItemList = ({
-  board, users, graph, navbarController,
+  boardData, userData, graphData, navbarController,
 }) => {
   const classes = useStyles();
   const { board: isBoard, user: isUser, graph: isGraph } = navbarController;
 
   const currentCardComponent = () => {
-    if (isBoard && board) {
-      return board.map((item) => <ItemCardComponent key={item.id} item={item} />);
+    if (isBoard && boardData) {
+      return boardData.map((item) => <ItemCardComponent key={item.id} item={item} />);
     }
 
-    if (isUser && users) {
-      return users.map((item) => <UserCardComponent key={item.id} item={item} />);
+    if (isUser && userData) {
+      return userData.map((item) => <UserCardComponent key={item.id} item={item} />);
     }
 
-    if (isGraph && graph) {
+    if (isGraph && graphData) {
       return (<div>준비중..</div>);
     }
 

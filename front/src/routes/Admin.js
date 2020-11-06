@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '../components/Admin/Header';
@@ -12,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Admin = ({ board, users, graph }) => {
+const Admin = ({ boardData, userData, graphData }) => {
   const classes = useStyles();
 
   const defalutController = { board: true, user: false, graph: false };
@@ -21,8 +20,16 @@ const Admin = ({ board, users, graph }) => {
   return (
     <section className={classes.root}>
       <Header />
-      <Navbar navbarController={navbarController} setNavbarController={setNavbarController} />
-      <ItemList board={board} users={users} graph={graph} navbarController={navbarController} />
+      <Navbar
+        navbarController={navbarController}
+        setNavbarController={setNavbarController}
+      />
+      <ItemList
+        boardData={boardData}
+        userData={userData}
+        graphData={graphData}
+        navbarController={navbarController}
+      />
     </section>
   );
 };
