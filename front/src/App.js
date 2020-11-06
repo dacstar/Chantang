@@ -5,12 +5,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './routes/Home';
 import Admin from './routes/Admin';
 
-// import { boardData, usersData } from './__fixture__/sample';
-
 const App = () => {
   const [boardData, setBoardData] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [graphData, setGraph] = useState(1);
+  // const [graphData, setGraph] = useState(1);
+  const graphData = 1;
 
   const getBoardData = () => axios.get('/boards');
   const getUserData = () => axios.get('/members');
