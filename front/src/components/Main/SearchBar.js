@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     marginRight: 15,
+    minWidth: 100,
   },
   textField: {
     margin: theme.spacing(1),

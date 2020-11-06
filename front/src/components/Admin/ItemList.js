@@ -43,16 +43,20 @@ const ItemList = ({
   const { board: isBoard, user: isUser, graph: isGraph } = navbarController;
 
   const currentCardComponent = () => {
-    if (isBoard && boardData) {
-      return boardData.map((item) => <ItemCardComponent key={item.id} item={item} />);
+    if (isBoard) {
+      return boardData
+        ? boardData.map((item) => <ItemCardComponent key={item.id} item={item} />)
+        : <div>로딩중..</div>;
     }
 
-    if (isUser && userData) {
-      return userData.map((item) => <UserCardComponent key={item.id} item={item} />);
+    if (isUser) {
+      return userData
+        ? userData.map((item) => <UserCardComponent key={item.id} item={item} />)
+        : <div>로딩중..</div>;
     }
 
     if (isGraph && graphData) {
-      return (<div>준비중..</div>);
+      return (<div>준비중</div>);
     }
 
     return (<div>There is no information.</div>);
