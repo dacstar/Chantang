@@ -5,40 +5,39 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './routes/Home';
 import Admin from './routes/Admin';
 
-import { board, users } from './__fixture__/sample';
-
 const App = () => {
-  // const [board, setBoard] = useState(null);
-  // const [users, setUser] = useState(null);
-  const [graph, setGraph] = useState(1);
+  const [boardData, setBoardData] = useState(null);
+  const [userData, setUserData] = useState(null);
+  // const [graphData, setGraph] = useState(1);
+  const graphData = 1;
 
-  // const getBoardData = () => axios.get('/boards');
-  // const getUserData = () => axios.get('/users');
+  const getBoardData = () => axios.get('/boards');
+  const getUserData = () => axios.get('/members');
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const boardData = await getBoardData();
-  //     const userData = await getUserData();
+  useEffect(() => {
+    const fetchData = async () => {
+      const boards = await getBoardData();
+      const users = await getUserData();
 
-  //     setBoard(boardData.data.items);
-  //     setUser(userData.data.items);
-  //   };
+      setBoardData(boards.data.items);
+      setUserData(users.data.items);
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   const HomeComponent = (props) => (
     <Home
-      board={board}
+      boardData={boardData}
       {...props}
     />
   );
 
   const AdminComponent = (props) => (
     <Admin
-      board={board}
-      users={users}
-      graph={graph}
+      boardData={boardData}
+      userData={userData}
+      graphData={graphData}
       {...props}
     />
   );

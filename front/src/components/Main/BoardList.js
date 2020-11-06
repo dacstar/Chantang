@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -16,20 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ItemList = () => {
-  const [board, setBoard] = useState(null);
-
-  const getData = () => axios.get('/boards');
-
-  useEffect(() => {
-    const fetchBoardData = async () => {
-      const boardData = await getData();
-      setBoard(boardData);
-    };
-
-    fetchBoardData();
-  }, []);
-
+const BoardList = ({ boardData }) => {
   const itemCardComponent = ({
     id, title, views, content, themeType,
   }) => (
@@ -59,9 +45,9 @@ const ItemList = () => {
 
   return (
     <Grid container spacing={2} className={classes.container}>
-      {board ? board.data.items.map((item) => itemCardComponent(item)) : <div>로딩중...</div>}
+      {boardData ? boardData.map((item) => itemCardComponent(item)) : <div>로딩중...</div>}
     </Grid>
   );
 };
 
-export default ItemList;
+export default BoardList;
