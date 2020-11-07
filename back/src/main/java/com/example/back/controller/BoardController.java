@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class BoardController {
-    private final BoardService boardService;
+    private BoardService boardService;
 
     @GetMapping("/boards")
     public ResponseEntity<List<BoardEntity>> findAll() {
@@ -20,8 +20,8 @@ public class BoardController {
     }
 
     @PostMapping("/boards")
-    public ResponseEntity<BoardEntity> save(@RequestBody BoardEntity boardEntity) {
-        boardService.save(boardEntity);
-        return new ResponseEntity<BoardEntity>(boardEntity, HttpStatus.OK);
+    public ResponseEntity<Long> register(@RequestBody BoardEntity boardEntity) {
+        Long id = boardService.save(boardEntity);
+        return new ResponseEntity<Long>(id, HttpStatus.OK);
     }
 }

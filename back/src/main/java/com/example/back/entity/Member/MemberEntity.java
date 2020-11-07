@@ -1,12 +1,12 @@
-package com.example.back.entity.User;
+package com.example.back.entity.Member;
 
 import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "member")
 @Data
-public class UserEntity {
+public class MemberEntity {
     @GeneratedValue
     @Id
     private Long id;
