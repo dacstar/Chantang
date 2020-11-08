@@ -4,8 +4,10 @@ import com.example.back.entity.Member.MemberEntity;
 import com.example.back.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.security.util.Password;
 
 import java.util.List;
 
@@ -15,11 +17,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
+    private final PasswordEncoder passwordEncoder;
     private final MemberRepository memberRepository;
 
     // save user
     @Transactional
     public Long join(MemberEntity user) {
+        String encodePassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodePassword);
         memberRepository.save(user);
         validateDuplicateUser(user);
         return user.getId();
