@@ -13,7 +13,8 @@ public class MemberEntity {
     @Id
     private Long id;
 
-    private String member_id;
+    @Column(name = "member_id")
+    private String memberId;
 
     private String password;
 

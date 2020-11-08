@@ -14,13 +14,16 @@ public class BoardEntity {
 
     private String title;
 
-    private String theme_type;
+    @Column(name = "theme_type")
+    private String themeType;
 
-    private String service_area;
+    @Column(name = "service_area")
+    private String serviceArea;
 
     private String content;
 
-    private String detail_content;
+    @Column(name = "detail_content")
+    private String detailContent;
 
     private Long views;
 }
