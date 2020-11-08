@@ -17,19 +17,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberService userService;
+    private final MemberService memberService;
 
     @PostMapping("/member/register")
-    public ResponseEntity<MemberEntity> Register(@RequestBody MemberEntity userEntity) {
-        userService.join(userEntity);
-        System.out.println(userEntity.getName() + " " + userEntity.getAddress() + " " + userEntity.getRole());
-        return new ResponseEntity<MemberEntity>(userEntity, HttpStatus.OK);
+    public ResponseEntity<MemberEntity> Register(@RequestBody MemberEntity memberEntity) {
+        memberService.join(memberEntity);
+        System.out.println(memberEntity.getName() + " " + memberEntity.getRole());
+        return new ResponseEntity<MemberEntity>(memberEntity, HttpStatus.OK);
     }
 
     @GetMapping("/member/find/{name}")
     public ResponseEntity<List<MemberEntity>> findByUser(@PathVariable String name) {
 
-        List<MemberEntity> user = userService.findByName(name);
+        List<MemberEntity> user = memberService.findByName(name);
         return new ResponseEntity<List<MemberEntity>>(user, HttpStatus.OK);
     }
 

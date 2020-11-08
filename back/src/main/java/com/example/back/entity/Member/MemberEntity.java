@@ -20,6 +20,5 @@ public class MemberEntity {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("MEMBER")
     private Lole role;
 }
