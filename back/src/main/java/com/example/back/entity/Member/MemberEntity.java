@@ -1,6 +1,8 @@
 package com.example.back.entity.Member;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,8 +13,13 @@ public class MemberEntity {
     @Id
     private Long id;
 
+    private String member_id;
+
+    private String password;
+
     private String name;
-    private String address;
+
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("MEMBER")
     private Lole role;
 }
