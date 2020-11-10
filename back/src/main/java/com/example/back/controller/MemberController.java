@@ -5,15 +5,14 @@ import com.example.back.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import lombok.RequiredArgsConstructor;
 
-@Controller
+import javax.servlet.http.HttpServletResponse;
+
+@RestController
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -21,6 +20,7 @@ public class MemberController {
 
     @PostMapping("/member/register")
     public ResponseEntity<MemberEntity> Register(@RequestBody MemberEntity memberEntity) {
+
         memberService.join(memberEntity);
         System.out.println(memberEntity.getName() + " " + memberEntity.getRole());
         return new ResponseEntity<MemberEntity>(memberEntity, HttpStatus.OK);

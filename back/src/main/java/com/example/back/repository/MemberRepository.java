@@ -33,4 +33,10 @@ public class MemberRepository {
         return em.createQuery("select u from MemberEntity u where u.name = :name", MemberEntity.class)
                 .setParameter("name", name).getResultList();
     }
+
+    // findByMemberId user
+    public List<MemberEntity> findByMemberId(String memberId) {
+        return em.createQuery("select u from MemberEntity u where u.memberId = :memberId", MemberEntity.class)
+                .setParameter("memberId", memberId).getResultList();
+    }
 }
