@@ -7,8 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import AddIcon from '@material-ui/icons/Add';
 
-import ItemCardComponent from './ItemCardComponent';
-import UserCardComponent from './UserCardComponent';
+import ItemCardComponent from './CardComponent/ItemCardComponent';
+import UserCardComponent from './CardComponent/UserCardComponent';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -68,7 +68,7 @@ const ItemList = ({
       <Grid container spacing={2}>
         {currentCardComponent()}
       </Grid>
-      <Fab color="primary" aria-label="add" className={classes.fab}>
+      <Fab color="secondary" aria-label="add" className={classes.fab}>
         <AddIcon />
       </Fab>
     </div>

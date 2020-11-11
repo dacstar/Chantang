@@ -5,11 +5,11 @@ import SearchBar from '../components/Main/SearchBar';
 import BoardList from '../components/Main/BoardList';
 
 const Home = ({ boardData }) => (
-  <section>
+  <div>
     <Header />
     <SearchBar />
     <BoardList boardData={boardData} />
-  </section>
+  </div>
 );
 
 export default Home;
