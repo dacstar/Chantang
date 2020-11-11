@@ -12,9 +12,12 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import AddIcon from '@material-ui/icons/Add';
 import { themeTypeSelect, serviceAreaSelect } from '../../../__fixture__/select_data';
-import { boardTemplate } from '../../../__fixture__/data_template';
+// import { boardTemplate } from '../../../__fixture__/data_template';
 
 const useStyles = makeStyles(() => ({
+  openBtn: {
+    color: 'white',
+  },
   dialogTitle: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -66,12 +69,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const CreateItemDialog = ({ open, setOpen }) => {
+const CreateItemDialog = () => {
   const classes = useStyles();
 
-  const [newItem, setNewItem] = useState(boardTemplate);
+  const [open, setOpen] = useState(false);
   const [themeSelect, setThemeSelect] = useState('type1');
   const [serviceSelect, setServiceSelect] = useState('SEL');
+  // const [newItem, setNewItem] = useState(boardTemplate);
+
+  const handleDialogOpen = () => {
+    setOpen(true);
+  };
 
   const handleDialogClose = () => {
     setOpen(false);
@@ -91,6 +99,9 @@ const CreateItemDialog = ({ open, setOpen }) => {
 
   return (
     <div>
+      <IconButton onClick={handleDialogOpen} className={classes.openBtn}>
+        <AddIcon />
+      </IconButton>
       <Dialog
         open={open}
         onClose={handleDialogClose}
