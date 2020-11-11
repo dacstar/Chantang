@@ -10,8 +10,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import CreateIcon from '@material-ui/icons/Create';
+import AddIcon from '@material-ui/icons/Add';
 import { themeTypeSelect, serviceAreaSelect } from '../../../__fixture__/select_data';
+import { boardTemplate } from '../../../__fixture__/data_template';
 
 const useStyles = makeStyles(() => ({
   dialogTitle: {
@@ -44,6 +45,9 @@ const useStyles = makeStyles(() => ({
   dialogTextField: {
     width: 150,
     paddingRight: 150,
+    '& input': {
+      padding: '6.5px 5px',
+    },
   },
   dialogTextAreaRoot: {
     fontSize: '1rem',
@@ -62,23 +66,18 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const CreateItemDialog = () => {
+const CreateItemDialog = ({ open, setOpen }) => {
   const classes = useStyles();
 
-  const [newItem, setNewItem] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [newItem, setNewItem] = useState(boardTemplate);
   const [themeSelect, setThemeSelect] = useState('type1');
   const [serviceSelect, setServiceSelect] = useState('SEL');
-
-  const handleDialogOpen = () => {
-    setOpen(true);
-  };
 
   const handleDialogClose = () => {
     setOpen(false);
   };
 
-  const handleSave = () => {
+  const handleSubmit = () => {
     setOpen(false);
   };
 
@@ -92,34 +91,17 @@ const CreateItemDialog = () => {
 
   return (
     <div>
-      <IconButton onClick={handleDialogOpen}>
-        <CreateIcon />
-      </IconButton>
       <Dialog
         open={open}
         onClose={handleDialogClose}
       >
         <DialogTitle>
-          <div className={classes.dialogTitle}>
-            <span>{title}</span>
-            <span className={classes.viewCount}>
-              views:
-              {views}
-            </span>
-          </div>
+          관광 프로그램 추가
         </DialogTitle>
         <DialogContent style={{ minHeight: 300 }}>
           <div className={classes.dialogContentRoot}>
-            <Box className={classes.dialogContentLeft}>고유아이디</Box>
-            <Box className={classes.dialogContentRight}>{id}</Box>
-          </div>
-          <div className={classes.dialogContentRoot}>
-            <Box className={classes.dialogContentLeft}>생성날짜</Box>
-            <Box className={classes.dialogContentRight}>{createdAt}</Box>
-          </div>
-          <div className={classes.dialogContentRoot}>
-            <Box className={classes.dialogContentLeft}>최근수정날짜</Box>
-            <Box className={classes.dialogContentRight}>{updatedAt}</Box>
+            <Box className={classes.dialogContentLeft}>프로그램명</Box>
+            <TextField className={classes.dialogTextField} variant="outlined" />
           </div>
           <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>테마별 분류</Box>
@@ -157,7 +139,6 @@ const CreateItemDialog = () => {
               className={classes.dialogTextArea}
               rowsMin={3}
               rowsMax={3}
-              defaultValue={content}
             />
           </div>
           <div className={classes.dialogTextAreaRoot}>
@@ -166,7 +147,6 @@ const CreateItemDialog = () => {
               className={classes.dialogTextArea}
               rowsMin={10}
               rowsMax={10}
-              defaultValue={detailContent}
             />
           </div>
         </DialogContent>
@@ -174,8 +154,8 @@ const CreateItemDialog = () => {
           <Button onClick={handleDialogClose} color="secondary">
             취소
           </Button>
-          <Button onClick={handleSave} color="primary">
-            저장
+          <Button onClick={handleSubmit} color="primary">
+            추가
           </Button>
         </DialogActions>
       </Dialog>

@@ -1,14 +1,12 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
-
 import AddIcon from '@material-ui/icons/Add';
-
 import ItemCardComponent from './CardComponent/ItemCardComponent';
 import UserCardComponent from './CardComponent/UserCardComponent';
+import CreateItemDialog from './Dialog/CreateItemDialog';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -41,6 +39,7 @@ const ItemList = ({
 }) => {
   const classes = useStyles();
   const { board: isBoard, user: isUser, graph: isGraph } = navbarController;
+  const [openDialog, setOpenDialog] = useState(false);
 
   const currentCardComponent = () => {
     if (isBoard) {
@@ -62,6 +61,10 @@ const ItemList = ({
     return (<div>There is no information.</div>);
   };
 
+  const handleDialogOpen = () => {
+    setOpenDialog(true);
+  };
+
   return (
     <div className={classes.content}>
       <Toolbar />
@@ -69,7 +72,8 @@ const ItemList = ({
         {currentCardComponent()}
       </Grid>
       <Fab color="secondary" aria-label="add" className={classes.fab}>
-        <AddIcon />
+        <AddIcon onClick={handleDialogOpen} />
+        <CreateItemDialog open={openDialog} setOpen={setOpenDialog} />
       </Fab>
     </div>
   );
