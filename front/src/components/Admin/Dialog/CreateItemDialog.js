@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import AddIcon from '@material-ui/icons/Add';
-import { themeTypeSelect, serviceAreaSelect } from '../../../__fixture__/select_data';
+import { themeTypeSelectMenu, serviceAreaSelectMenu } from '../../../__fixture__/select_data';
 // import { boardTemplate } from '../../../__fixture__/data_template';
 
 const useStyles = makeStyles(() => ({
@@ -122,7 +122,7 @@ const CreateItemDialog = () => {
               value={themeSelect}
               onChange={handleThemeTypeChange}
             >
-              {themeTypeSelect.map((option) => (
+              {themeTypeSelectMenu.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
@@ -137,7 +137,7 @@ const CreateItemDialog = () => {
               value={serviceSelect}
               onChange={handleServiceAreaChange}
             >
-              {serviceAreaSelect.map((option) => (
+              {serviceAreaSelectMenu.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>

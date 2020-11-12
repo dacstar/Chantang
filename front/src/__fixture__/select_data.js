@@ -1,4 +1,4 @@
-export const serviceAreaSelect = [
+export const serviceAreaSelectMenu = [
   {
     value: 'SEL',
     label: '서울',
@@ -65,7 +65,7 @@ export const serviceAreaSelect = [
   },
 ];
 
-export const themeTypeSelect = [
+export const themeTypeSelectMenu = [
   {
     value: 'type1',
     label: '타입1',
@@ -85,5 +85,16 @@ export const themeTypeSelect = [
   {
     value: 'type5',
     label: '타입5',
+  },
+];
+
+export const roleSelectMenu = [
+  {
+    value: 'ADMIN',
+    label: '관리자',
+  },
+  {
+    value: 'MEMBER',
+    label: '일반사용자',
   },
 ];
