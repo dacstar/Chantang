@@ -4,10 +4,10 @@ import Header from '../components/SignIn/Header';
 import Login from '../components/SignIn/Login';
 
 const SignIn = () => (
-  <section>
+  <div>
     <Header />
     <Login />
-  </section>
+  </div>
 );
 
 export default SignIn;

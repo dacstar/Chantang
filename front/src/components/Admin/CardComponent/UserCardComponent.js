@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,9 +6,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
-
-import CreateIcon from '@material-ui/icons/Create';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import UserCardDialog from '../Dialog/UserCardDialog';
 
 const useStyles = makeStyles(() => ({
   cardContainer: {
@@ -45,9 +43,7 @@ const UserCardComponent = ({ item }) => {
           </Typography>
         </CardContent>
         <CardActions className={classes.cardButtons}>
-          <IconButton>
-            <CreateIcon />
-          </IconButton>
+          <UserCardDialog user={item} />
           <IconButton>
             <DeleteForeverIcon />
           </IconButton>

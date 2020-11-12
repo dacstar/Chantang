@@ -18,7 +18,7 @@ const Admin = ({ boardData, userData, graphData }) => {
   const [navbarController, setNavbarController] = useState(defalutController);
 
   return (
-    <section className={classes.root}>
+    <div className={classes.root}>
       <Header />
       <Navbar
         navbarController={navbarController}
@@ -30,7 +30,7 @@ const Admin = ({ boardData, userData, graphData }) => {
         graphData={graphData}
         navbarController={navbarController}
       />
-    </section>
+    </div>
   );
 };
 

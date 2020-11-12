@@ -6,6 +6,7 @@ import Home from './routes/Home';
 import Admin from './routes/Admin';
 import SignIn from './routes/SignIn';
 import SignUp from './routes/SignUp';
+import Place from './routes/Place';
 
 const App = () => {
   const [boardData, setBoardData] = useState(null);
@@ -48,6 +49,7 @@ const App = () => {
     <BrowserRouter>
       <Route path="/" exact component={HomeComponent} />
       <Route path="/admin" component={AdminComponent} />
+      <Route path="/place/:id" component={Place} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
     </BrowserRouter>
