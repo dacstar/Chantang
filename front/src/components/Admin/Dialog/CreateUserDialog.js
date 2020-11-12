@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { roleSelectMenu } from '../../../__fixture__/select_data';
+// import { userTemplate } from '../../../__fixture__/data_template';
 
 const useStyles = makeStyles(() => ({
   dialogContentRoot: {
@@ -27,26 +28,19 @@ const useStyles = makeStyles(() => ({
   dialogContentLeft: {
     width: 150,
   },
-  dialogContentRight: {
-    width: 250,
-  },
   dialogTextField: {
     width: 150,
-    paddingRight: 100,
     '& input': {
       padding: '6.5px 5px',
     },
   },
 }));
 
-const UserCardDialog = ({ user }) => {
+const UserCardDialog = () => {
   const classes = useStyles();
-  const {
-    id, created_at: createdAt, updated_at: updatedAt,
-    member_id: userID, name, password, role,
-  } = user;
   const [open, setOpen] = useState(false);
-  const [roleSelect, setRoleSelect] = useState(role);
+  const [roleSelect, setRoleSelect] = useState('MEMBER');
+  // const [newUser, setNewUser] = useState(userTemplate);
 
   const handleOpen = () => {
     setOpen(true);
@@ -74,32 +68,20 @@ const UserCardDialog = ({ user }) => {
         onClose={handleClose}
       >
         <DialogTitle>
-          유저정보
+          새로운 유저 생성
         </DialogTitle>
         <DialogContent>
           <div className={classes.dialogContentRoot}>
-            <Box className={classes.dialogContentLeft}>고유아이디</Box>
-            <Box className={classes.dialogContentRight}>{id}</Box>
-          </div>
-          <div className={classes.dialogContentRoot}>
-            <Box className={classes.dialogContentLeft}>생성날짜</Box>
-            <Box className={classes.dialogContentRight}>{createdAt}</Box>
-          </div>
-          <div className={classes.dialogContentRoot}>
-            <Box className={classes.dialogContentLeft}>최근수정날짜</Box>
-            <Box className={classes.dialogContentRight}>{updatedAt}</Box>
-          </div>
-          <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>사용자아이디</Box>
-            <TextField className={classes.dialogTextField} variant="outlined" defaultValue={userID} />
+            <TextField className={classes.dialogTextField} variant="outlined" />
           </div>
           <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>사용자명</Box>
-            <TextField className={classes.dialogTextField} variant="outlined" defaultValue={name} />
+            <TextField className={classes.dialogTextField} variant="outlined" />
           </div>
           <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>비밀번호</Box>
-            <TextField className={classes.dialogTextField} variant="outlined" defaultValue={password} />
+            <TextField className={classes.dialogTextField} variant="outlined" />
           </div>
           <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>권한</Box>
@@ -122,7 +104,7 @@ const UserCardDialog = ({ user }) => {
             취소
           </Button>
           <Button onClick={handleSave} color="primary">
-            저장
+            추가
           </Button>
         </DialogActions>
       </Dialog>

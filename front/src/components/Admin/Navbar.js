@@ -1,12 +1,10 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import {
   List, ListItem, ListItemIcon, ListItemText, Toolbar,
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-
 import PanoramaIcon from '@material-ui/icons/Panorama';
 import PeopleIcon from '@material-ui/icons/People';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
