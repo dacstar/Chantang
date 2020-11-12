@@ -44,6 +44,9 @@ const useStyles = makeStyles(() => ({
   dialogTextField: {
     width: 150,
     paddingRight: 150,
+    '& input': {
+      padding: '6.5px 5px',
+    },
   },
   dialogTextAreaRoot: {
     fontSize: '1rem',
@@ -104,7 +107,7 @@ const ItemCardDialog = ({ item }) => {
       >
         <DialogTitle>
           <div className={classes.dialogTitle}>
-            <span>{title}</span>
+            <span>관광 프로그램 상세정보</span>
             <span className={classes.viewCount}>
               views:
               {views}
@@ -123,6 +126,10 @@ const ItemCardDialog = ({ item }) => {
           <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>최근수정날짜</Box>
             <Box className={classes.dialogContentRight}>{updatedAt}</Box>
+          </div>
+          <div className={classes.dialogContentRoot}>
+            <Box className={classes.dialogContentLeft}>프로그램명</Box>
+            <TextField className={classes.dialogTextField} variant="outlined" defaultValue={title} />
           </div>
           <div className={classes.dialogContentRoot}>
             <Box className={classes.dialogContentLeft}>테마별 분류</Box>
