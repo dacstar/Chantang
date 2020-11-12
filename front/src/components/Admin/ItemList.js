@@ -5,7 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import ItemCardComponent from './CardComponent/ItemCardComponent';
 import UserCardComponent from './CardComponent/UserCardComponent';
 import CreateItemDialog from './Dialog/CreateItemDialog';
-import CreateUserDialog from './Dialog/CreateUserDialog';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -85,16 +84,27 @@ const ItemList = ({
     return (<div>There is no information.</div>);
   };
 
+  const createItemBtn = () => {
+    if (isBoard) {
+      return (
+        <div className={classes.floating}>
+          <CreateItemDialog />
+        </div>
+      );
+    }
+    return (
+      <>
+      </>
+    );
+  };
+
   return (
     <div className={classes.content}>
       <Toolbar />
       <Grid container spacing={2}>
         {currentCardComponent()}
       </Grid>
-      <div className={classes.floating}>
-        {/* <CreateItemDialog /> */}
-        <CreateUserDialog />
-      </div>
+      {createItemBtn()}
     </div>
   );
 };

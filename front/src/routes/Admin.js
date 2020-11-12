@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
 const Admin = ({ boardData, userData, graphData }) => {
   const classes = useStyles();
 
-  const defalutController = { board: false, user: true, graph: false };
+  const defalutController = { board: true, user: false, graph: false };
   const [navbarController, setNavbarController] = useState(defalutController);
 
   return (
