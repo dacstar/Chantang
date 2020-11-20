@@ -16,14 +16,20 @@ const useStyles = makeStyles({
       marginTop: 10,
       marginBottom: 20,
     },
-    '& span': {
-      paddingLeft: 15,
+    '& div': {
+      position: 'relative',
+      left: '64%',
+      bottom: '10%',
+      '& span:nth-child(2)': {
+        marginLeft: 20,
+      },
     },
   },
   viewCount: {
     color: 'grey',
     textAlign: 'center',
-    paddingTop: '4%',
+    paddingTop: '2%',
+    fontSize: 13,
   },
   textBoxSmall: {
     height: 150,
@@ -60,18 +66,20 @@ const PlaceItem = ({ place }) => {
       className={classes.container}
     >
       <Grid item xs={6} className={`${classes.item} ${classes.title}`}>
-        <h2>{title}</h2>
-        <span>{`테마: ${themeType}`}</span>
-        <span>{`지역: ${serviceArea}`}</span>
+        <h1>{title}</h1>
+        <div>
+          <span>{`테마: ${themeType}` }</span>
+          <span>{`지역: ${serviceArea}`}</span>
+        </div>
       </Grid>
-      <Grid item xs={2} className={`${classes.item} ${classes.viewCount}`}>
+      <Grid item xs={1} className={`${classes.item} ${classes.viewCount}`}>
         {`조회수: ${views}`}
       </Grid>
-      <Grid item xs={8} className={`${classes.item} ${classes.textBoxSmall}`}>
+      <Grid item xs={7} className={`${classes.item} ${classes.textBoxSmall}`}>
         <div className={classes.textBoxTitle}>요약 정보</div>
         <div className={classes.textBoxContent}>{content}</div>
       </Grid>
-      <Grid item xs={8} className={`${classes.item} ${classes.textBoxLarge}`}>
+      <Grid item xs={7} className={`${classes.item} ${classes.textBoxLarge}`}>
         <div className={classes.textBoxTitle}>상세 내용</div>
         <div className={classes.textBoxContent}>{detailContent}</div>
       </Grid>
