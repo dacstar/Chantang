@@ -75,3 +75,36 @@ export const users = [
     password: 'password3',
   },
 ];
+
+export const comments = [
+  {
+    id: 'id1',
+    author: 'author1',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam odio tortor, ullamcorper quis justo ut',
+    createdAt: '20.11.20 18:19',
+  },
+  {
+    id: 'id2',
+    author: 'author2',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam odio tortor, ullamcorper quis justo ut',
+    createdAt: '20.11.20 18:19',
+  },
+  {
+    id: 'id3',
+    author: 'author3',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam odio tortor, ullamcorper quis justo ut',
+    createdAt: '20.11.20 18:19',
+  },
+  {
+    id: 'id4',
+    author: 'author4',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam odio tortor, ullamcorper quis justo ut',
+    createdAt: '20.11.20 18:19',
+  },
+  {
+    id: 'id5',
+    author: 'author5',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam odio tortor, ullamcorper quis justo ut',
+    createdAt: '20.11.20 18:19',
+  },
+];

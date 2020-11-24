@@ -1,33 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './routes/Home';
 import Admin from './routes/Admin';
 import SignIn from './routes/SignIn';
 import SignUp from './routes/SignUp';
-import Place from './routes/Place';
+import Place from './routes/Detail';
+import { board, users } from './__fixture__/sample';
 
 const App = () => {
-  const [boardData, setBoardData] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [boardData, setBoardData] = useState(board);
+  const [userData, setUserData] = useState(users);
+  // const [boardData, setBoardData] = useState(null);
+  // const [userData, setUserData] = useState(null);
   // const [graphData, setGraph] = useState(1);
   const graphData = 1;
 
-  const getBoardData = () => axios.get('/boards');
-  const getUserData = () => axios.get('/members');
+  // const getBoardData = () => axios.get('/boards');
+  // const getUserData = () => axios.get('/members');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const boards = await getBoardData();
-      const users = await getUserData();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const boards = await getBoardData();
+  //     const users = await getUserData();
 
-      setBoardData(boards.data.items);
-      setUserData(users.data.items);
-    };
+  //     setBoardData(boards.data.items);
+  //     setUserData(users.data.items);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const HomeComponent = (props) => (
     <Home

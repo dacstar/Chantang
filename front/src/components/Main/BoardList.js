@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -22,7 +21,6 @@ const useStyles = makeStyles({
 
 const BoardList = ({ boardData }) => {
   const classes = useStyles();
-
   const itemCardComponent = (item) => {
     const {
       id, title, views, content, themeType,
