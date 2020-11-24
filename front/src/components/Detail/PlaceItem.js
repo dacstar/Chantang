@@ -18,8 +18,7 @@ const useStyles = makeStyles({
     },
     '& div': {
       position: 'relative',
-      left: '64%',
-      bottom: '10%',
+      bottom: '5%',
       '& span:nth-child(2)': {
         marginLeft: 20,
       },
